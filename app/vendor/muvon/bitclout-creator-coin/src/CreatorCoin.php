@@ -48,8 +48,6 @@ class CreatorCoin {
    *   Locked amount in nanos
    * @param int $supply
    *   Total supply in $creator coins in nanos
-   * @param int $watermark
-   *   Optional watermark in case we use same strategy
    * @return static
    */
   public function init(int $locked, int $supply, int $watermark = 0): static {
@@ -143,6 +141,11 @@ class CreatorCoin {
       $minted = $this->calculateBancorMinting($buy_amount);
     }
 
+    // Salamon bug fixed after watermark startegy
+    if ($this->strategy !== 'watermark' && $minted < static::THRESHOLD) {
+      throw new InvalidArgumentException('Creator coins minted amount is out of threshold');
+    }
+
     if (!$preview) {
       $this->locked += $buy_amount;
       $this->supply += $minted;
@@ -169,7 +172,7 @@ class CreatorCoin {
       'minted' => $minted,
       'received' => $received,
       'reward' => $reward,
-      'rate' => intval(($buy_amount / $minted) * static::NANOS_PER_UNIT),
+      'rate' => $minted > 0 ? intval(($buy_amount / $minted) * static::NANOS_PER_UNIT) : 0,
     ];
     return $this;
   }
@@ -229,7 +232,7 @@ class CreatorCoin {
 
   protected function calculateReturned(int $amount): int {
     if ($amount > $this->supply) {
-      throw new InvalidArgumentException('Amount of coins is out of supply');
+      throw new InvalidArgumentException('Amount of coins is out of supply: ' . $amount . ' > ' . $this->supply);
     }
     $delta_amount = $amount / static::NANOS_PER_UNIT;
     $delta_supply = $this->supply / static::NANOS_PER_UNIT;
@@ -250,6 +253,9 @@ class CreatorCoin {
   }
 
   // Getters
+  public function getReward(): int {
+    return $this->reward;
+  }
   public function getLocked(): int {
     return $this->locked;
   }
