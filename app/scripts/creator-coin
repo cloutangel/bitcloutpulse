@@ -17,7 +17,7 @@ $reward_map = [];
 
 $height = 0;
 if (file_exists('block')) {
-  $height = intval(file_get_contents('block'));
+  $height = intval(file_get_contents('block')) + 1;
   $reward_map = json_decode(file_get_contents('reward_' . $height), true);
   $coin_data = json_decode(file_get_contents('coin_' . $height), true);
   foreach ($coin_data as $pubkey => [$locked, $supply, $watermark]) {
