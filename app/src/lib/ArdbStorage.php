@@ -75,17 +75,22 @@ class ArdbStorage extends ArdbClient {
     if ($operation === 'buy') {
       $this->Client->zIncrBy('contest:1', $clout, $investor_pubkey);
     }
-    $this->Client->hIncrBy('portfolio:' . $investor_pubkey, $creator_pubkey, $operation === 'buy' ? $clout : -$clout);
 
     $buy_clout = $this->Client->hGet('investor:buy', $investor_pubkey) ?: 0;
     $entries = floor($buy_clout / (100 * 10 ** 9));
     $this->Client->zAdd('contest:2', $entries, $investor_pubkey);
-    $held_clout = $this->Client->hGet('portfolio:' . $investor_pubkey, $creator_pubkey) ?: 0;
-    $entries = floor($held_clout / 10 ** 9);
-    if ($entries < 0) {
-      $entries = 0;
+
+    $delta = $operation === 'buy' ? $clout : -$clout;
+    $held_before = $this->Client->hGet('portfolio:' . $investor_pubkey, $creator_pubkey) ?: 0;
+    $this->Client->hIncrBy('portfolio:' . $investor_pubkey, $creator_pubkey, $delta);
+    $held_after = $held_before + $delta;
+    $entries_delta = floor($held_after / 10 ** 9) - floor($held_before / 10 ** 9);
+    if ($entries_delta < 0) {
+      $entries_delta = 0;
     }
-    $this->Client->zAdd('contest:3', $entries, $investor_pubkey);
+    if ($entries_delta > 0) {
+      $this->Client->zIncrBy('contest:3', $entries_delta, $investor_pubkey);
+    }
     $this->Client->hSet('username', $investor_pubkey, $investor_pubkey);
     return $this;
   }
