@@ -1,0 +1,117 @@
+#!/usr/bin/env /src/bin/php-exec-one
+<?php
+
+use App\Component\Coin;
+use App\Lib\ArdbStorage;
+use App\Lib\BitcloutPulse;
+use Muvon\Bitclout\NodeAPI;
+use Muvon\Bitclout\CreatorCoin;
+
+Cli::print('start');
+$Storage = ArdbStorage::create();
+$Node = NodeAPI::create(config('bitclout'));
+
+$dump_freq = 500;
+$coin_map = [];
+$reward_map = [];
+
+$height = 0;
+if (file_exists('block')) {
+  $height = intval(file_get_contents('block'));
+  $reward_map = json_decode(file_get_contents('reward_' . $height), true);
+  $coin_data = json_decode(file_get_contents('coin_' . $height), true);
+  foreach ($coin_data as $pubkey => [$locked, $supply, $watermark]) {
+    $coin_map[$pubkey] = CreatorCoin::create($reward_map[$pubkey])
+      ->init($locked, $supply, $watermark)
+    ;
+  }
+}
+while (true) {
+  $block = result($Node->getBlock($height, 'height', true));
+  foreach ($block['Transactions'] as $tx) {
+    if ($tx['TransactionType'] === 'UPDATE_PROFILE') {
+      $tx_meta = $tx['TransactionMetadata'];
+      $meta = $tx_meta['UpdateProfileTxindexMetadata'];
+      $tx_hash = $tx['TransactionIDBase58Check'];
+
+      $pubkey = $tx_meta['TransactorPublicKeyBase58Check'];
+      foreach ($tx_meta['AffectedPublicKeys'] as $affected) {
+        if ($affected['Metadata'] === 'ProfilePublicKeyBase58Check' && $affected['PublicKeyBase58Check'] !== '8mkU8yaVLs') {
+          $pubkey = $affected['PublicKeyBase58Check'];
+        }
+      }
+
+      $reward_map[$pubkey] = $tx['TransactionMetadata']['UpdateProfileTxindexMetadata']['NewCreatorBasisPoints'];
+      continue;
+    }
+
+    if ($tx['TransactionType'] === 'SWAP_IDENTITY') {
+      $tx_meta = $tx['TransactionMetadata'];
+      $meta = $tx_meta['SwapIdentityTxindexMetadata'];
+      $reward_from = $reward_map[$meta['FromPublicKeyBase58Check']] ?? 0;
+      $reward_to = $reward_map[$meta['ToPublicKeyBase58Check']] ?? 0;
+
+      $reward_map[$meta['FromPublicKeyBase58Check']] = $reward_to;
+      $reward_map[$meta['ToPublicKeyBase58Check']] = $reward_from;
+
+      continue;
+    }
+
+    if ($tx['TransactionType'] !== 'CREATOR_COIN') {
+      continue;
+    }
+
+    $tx_meta = $tx['TransactionMetadata'];
+    $coin_meta = $tx_meta['CreatorCoinTxindexMetadata'];
+    $investor_pubkey = $tx_meta['TransactorPublicKeyBase58Check'];
+    $creator_pubkey = null;
+    foreach ($tx_meta['AffectedPublicKeys'] as $affected) {
+      if ($affected['Metadata'] === 'CreatorPublicKey') {
+        $creator_pubkey = $affected['PublicKeyBase58Check'];
+      }
+    }
+
+    $tx_id = $tx['TransactionIDBase58Check'];
+    Cli::print([
+      $tx_id,
+      '  investor = ' . $investor_pubkey,
+      '  creator = ' . $creator_pubkey,
+      '  operation = ' . $coin_meta['OperationType'],
+    ]);
+
+    if (!isset($coin_map[$creator_pubkey])) {
+      $coin_map[$creator_pubkey] = CreatorCoin::create($reward_map[$creator_pubkey]);
+    }
+    $coin_map[$creator_pubkey]
+      ->setReward($reward_map[$creator_pubkey])
+      ->setStrategyByHeight($height)
+    ;
+    if ($coin_meta['OperationType'] === 'buy') {
+      $nanos = $coin_meta['BitCloutToSellNanos'];
+      $last_buy = $coin_map[$creator_pubkey]->buy($nanos)->getLastBuy();
+      $coins = $last_buy['received'];
+    } else {
+      $last_sell = $coin_map[$creator_pubkey]->buy($nanos)->getLastSell();
+      $nanos = $last_sell['returned'];
+      $coins = $coin_meta['CreatorCoinToSellNanos'];
+    }
+
+    Cli::print([
+      '  coins = ' . bcdiv($coins, 10 ** 9, 9),
+      '  clout = ' . bcdiv($nanos, 10 ** 9, 9),
+    ]);
+  }
+  if ($height % $dump_freq === 0) {
+    file_put_contents('reward_' . $height, json_encode($reward_map));
+    $coin_data = [];
+    foreach ($coin_map as $pubkey => $Coin) {
+      $coin_data[$pubkey] = [$Coin->getLocked(), $Coin->getSupply(), $Coin->getWatermark()];
+    }
+    file_put_contents('coin_' . $height, json_encode($coin_data));
+    unset($coin_data);
+
+    file_put_contents('block', $height);
+  }
+  $height++;
+}
+Cli::print('done');
