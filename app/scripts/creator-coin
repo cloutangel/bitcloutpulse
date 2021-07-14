@@ -6,7 +6,7 @@ use App\Lib\ArdbStorage;
 use App\Lib\BitcloutPulse;
 use Muvon\Bitclout\NodeAPI;
 use Muvon\Bitclout\CreatorCoin;
-
+ini_set('memory_limit', '20G');
 Cli::print('start');
 $Storage = ArdbStorage::create();
 $Node = NodeAPI::create(config('bitclout'));
@@ -27,6 +27,7 @@ if (file_exists('block')) {
   }
 }
 while (true) {
+  Cli::print('Height #' . $height);
   $block = result($Node->getBlock($height, 'height', true));
   foreach ($block['Transactions'] as $tx) {
     if ($tx['TransactionType'] === 'UPDATE_PROFILE') {
