@@ -1,0 +1,456 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "2684278b3fefa7cc6e3bbcde05149c97",
+    "packages": [
+        {
+            "name": "minter/minter-php-bip-44",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MinterTeam/minter-php-bip-44.git",
+                "reference": "755328dad0a28500244730c5eb7ff71eba1c4111"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MinterTeam/minter-php-bip-44/zipball/755328dad0a28500244730c5eb7ff71eba1c4111",
+                "reference": "755328dad0a28500244730c5eb7ff71eba1c4111",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3|^8.0",
+                "simplito/elliptic-php": "1.0.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7|^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "BIP\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "support": {
+                "issues": "https://github.com/MinterTeam/minter-php-bip-44/issues",
+                "source": "https://github.com/MinterTeam/minter-php-bip-44/tree/v1.2.0"
+            },
+            "time": "2021-03-25T10:10:28+00:00"
+        },
+        {
+            "name": "muvon/base58-codec",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Muvon/php-kiss-base58-codec.git",
+                "reference": "753aeb34bbcb5d2bf902b8644efbca6052932b00"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Muvon/php-kiss-base58-codec/zipball/753aeb34bbcb5d2bf902b8644efbca6052932b00",
+                "reference": "753aeb34bbcb5d2bf902b8644efbca6052932b00",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Muvon\\KISS\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muvon Co. Ltd",
+                    "email": "contact@muvon.io"
+                }
+            ],
+            "description": "Base58 codec",
+            "keywords": [
+                "base58",
+                "codec",
+                "decoder",
+                "encoder",
+                "kiss",
+                "lightweight"
+            ],
+            "support": {
+                "issues": "https://github.com/Muvon/php-kiss-base58-codec/issues",
+                "source": "https://github.com/Muvon/php-kiss-base58-codec/tree/0.1"
+            },
+            "time": "2021-04-27T14:58:03+00:00"
+        },
+        {
+            "name": "muvon/bitclout-creator-coin",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Muvon/php-bitclout-creator-coin.git",
+                "reference": "518e67c57fe3b943b88124618767065ebf20a80d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Muvon/php-bitclout-creator-coin/zipball/518e67c57fe3b943b88124618767065ebf20a80d",
+                "reference": "518e67c57fe3b943b88124618767065ebf20a80d",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Muvon\\Bitclout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muvon Co. Ltd",
+                    "email": "contact@muvon.io"
+                }
+            ],
+            "description": "Implementation of creator coin curve of BitClout",
+            "keywords": [
+                "bclt",
+                "bitclout",
+                "blockchain",
+                "clout",
+                "coin",
+                "creator",
+                "cryptocurrency",
+                "token"
+            ],
+            "support": {
+                "issues": "https://github.com/Muvon/php-bitclout-creator-coin/issues",
+                "source": "https://github.com/Muvon/php-bitclout-creator-coin/tree/0.4.0"
+            },
+            "time": "2021-07-11T12:55:29+00:00"
+        },
+        {
+            "name": "muvon/bitclout-node-api",
+            "version": "0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Muvon/php-bitclout-node-api.git",
+                "reference": "144595f671cd6a40f342f6bba133c76c444910fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Muvon/php-bitclout-node-api/zipball/144595f671cd6a40f342f6bba133c76c444910fc",
+                "reference": "144595f671cd6a40f342f6bba133c76c444910fc",
+                "shasum": ""
+            },
+            "require": {
+                "minter/minter-php-bip-44": "^1.2",
+                "muvon/base58-codec": "^0.1",
+                "muvon/kiss-request-trait": "^0.8.2",
+                "simplito/elliptic-php": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Muvon\\Bitclout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muvon Co. Ltd",
+                    "email": "contact@muvon.io"
+                }
+            ],
+            "description": "Implementation of Bitclout API interaction through its node",
+            "keywords": [
+                "api",
+                "bclt",
+                "bitclout",
+                "blockchain",
+                "coin",
+                "cryptocurrency",
+                "node",
+                "rpc",
+                "token"
+            ],
+            "support": {
+                "issues": "https://github.com/Muvon/php-bitclout-node-api/issues",
+                "source": "https://github.com/Muvon/php-bitclout-node-api/tree/0.6.0"
+            },
+            "time": "2021-06-16T05:53:19+00:00"
+        },
+        {
+            "name": "muvon/kiss-binary-codec",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Muvon/php-kiss-binary-codec.git",
+                "reference": "6f7bef5ab40cf458fb6e8015412290805bf54831"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Muvon/php-kiss-binary-codec/zipball/6f7bef5ab40cf458fb6e8015412290805bf54831",
+                "reference": "6f7bef5ab40cf458fb6e8015412290805bf54831",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Muvon\\KISS\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muvon Co. Ltd",
+                    "email": "contact@muvon.io"
+                }
+            ],
+            "description": "Binary codec for encoding multiple structures with predefined config",
+            "keywords": [
+                "binary",
+                "codec",
+                "decoder",
+                "encoder",
+                "kiss",
+                "lightweight"
+            ],
+            "support": {
+                "issues": "https://github.com/Muvon/php-kiss-binary-codec/issues",
+                "source": "https://github.com/Muvon/php-kiss-binary-codec/tree/0.3.1"
+            },
+            "time": "2021-04-06T13:33:00+00:00"
+        },
+        {
+            "name": "muvon/kiss-request-trait",
+            "version": "0.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Muvon/php-kiss-request-trait.git",
+                "reference": "43dd1fcc9da691481f45f3ddc93aab270f0cb8a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Muvon/php-kiss-request-trait/zipball/43dd1fcc9da691481f45f3ddc93aab270f0cb8a4",
+                "reference": "43dd1fcc9da691481f45f3ddc93aab270f0cb8a4",
+                "shasum": ""
+            },
+            "require": {
+                "muvon/kiss-binary-codec": "^0.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Muvon\\KISS\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muvon Co. Ltd",
+                    "email": "contact@muvon.io"
+                }
+            ],
+            "description": "KISS implementation of RequestTrait with usage of CURL",
+            "keywords": [
+                "curl",
+                "http",
+                "json",
+                "kiss",
+                "request",
+                "trait"
+            ],
+            "support": {
+                "issues": "https://github.com/Muvon/php-kiss-request-trait/issues",
+                "source": "https://github.com/Muvon/php-kiss-request-trait/tree/0.8.2"
+            },
+            "time": "2021-05-18T04:25:02+00:00"
+        },
+        {
+            "name": "simplito/bigint-wrapper-php",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simplito/bigint-wrapper-php.git",
+                "reference": "cf21ec76d33f103add487b3eadbd9f5033a25930"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simplito/bigint-wrapper-php/zipball/cf21ec76d33f103add487b3eadbd9f5033a25930",
+                "reference": "cf21ec76d33f103add487b3eadbd9f5033a25930",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BI\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simplito Team",
+                    "email": "s.smyczynski@simplito.com",
+                    "homepage": "https://simplito.com"
+                }
+            ],
+            "description": "Common interface for php_gmp and php_bcmath modules",
+            "support": {
+                "issues": "https://github.com/simplito/bigint-wrapper-php/issues",
+                "source": "https://github.com/simplito/bigint-wrapper-php/tree/1.0.0"
+            },
+            "time": "2018-02-27T12:38:08+00:00"
+        },
+        {
+            "name": "simplito/bn-php",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simplito/bn-php.git",
+                "reference": "e852fcd27e4acbc32459606d7606e45a85e42465"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simplito/bn-php/zipball/e852fcd27e4acbc32459606d7606e45a85e42465",
+                "reference": "e852fcd27e4acbc32459606d7606e45a85e42465",
+                "shasum": ""
+            },
+            "require": {
+                "simplito/bigint-wrapper-php": "~1.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BN\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simplito Team",
+                    "email": "s.smyczynski@simplito.com",
+                    "homepage": "https://simplito.com"
+                }
+            ],
+            "description": "Big number implementation compatible with bn.js",
+            "support": {
+                "issues": "https://github.com/simplito/bn-php/issues",
+                "source": "https://github.com/simplito/bn-php/tree/1.1.2"
+            },
+            "time": "2018-04-12T11:07:43+00:00"
+        },
+        {
+            "name": "simplito/elliptic-php",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simplito/elliptic-php.git",
+                "reference": "15652609aa55968d56685c2a9120535ccdc00fd9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simplito/elliptic-php/zipball/15652609aa55968d56685c2a9120535ccdc00fd9",
+                "reference": "15652609aa55968d56685c2a9120535ccdc00fd9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gmp": "*",
+                "simplito/bn-php": "~1.1.0"
+            },
+            "require-dev": {
+                "phpbench/phpbench": "@dev",
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Elliptic\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simplito Team",
+                    "email": "s.smyczynski@simplito.com",
+                    "homepage": "https://simplito.com"
+                }
+            ],
+            "description": "Fast elliptic curve cryptography",
+            "homepage": "https://github.com/simplito/elliptic-php",
+            "keywords": [
+                "Curve25519",
+                "ECDSA",
+                "Ed25519",
+                "EdDSA",
+                "cryptography",
+                "curve",
+                "ecc",
+                "ecdh",
+                "elliptic",
+                "nistp192",
+                "nistp224",
+                "nistp256",
+                "nistp384",
+                "nistp521",
+                "secp256k1"
+            ],
+            "support": {
+                "issues": "https://github.com/simplito/elliptic-php/issues",
+                "source": "https://github.com/simplito/elliptic-php/tree/1.0.6"
+            },
+            "time": "2019-11-14T13:43:07+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}

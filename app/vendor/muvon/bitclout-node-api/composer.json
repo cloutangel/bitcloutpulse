@@ -1,0 +1,38 @@
+{
+  "name": "muvon/bitclout-node-api",
+  "description": "Implementation of Bitclout API interaction through its node",
+  "keywords": [
+    "bitclout",
+    "bclt",
+    "blockchain",
+    "token",
+    "coin",
+    "rpc",
+    "api",
+    "node",
+    "cryptocurrency"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Muvon Co. Ltd",
+      "email": "contact@muvon.io"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require-dev": {
+    "phpunit/phpunit": "^10"
+  },
+  "require": {
+    "muvon/kiss-request-trait": "^0.8.2",
+    "simplito/elliptic-php": "^1.0",
+    "minter/minter-php-bip-44": "^1.2",
+    "muvon/base58-codec": "^0.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Muvon\\Bitclout\\": "src/"
+    }
+  }
+}
