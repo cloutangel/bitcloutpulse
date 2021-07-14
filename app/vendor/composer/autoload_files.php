@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'fdebb5c5d6efd2c1a1d3bd653d998fea' => $vendorDir . '/muvon/kiss-binary-codec/src/functions.php',
+    '9b14fd02f5973ae82dd9f0610b8df4fd' => $vendorDir . '/muvon/kiss-money/src/functions.php',
 );

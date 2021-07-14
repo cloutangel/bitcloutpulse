@@ -256,6 +256,60 @@
             "install-path": "../muvon/kiss-binary-codec"
         },
         {
+            "name": "muvon/kiss-money",
+            "version": "0.4.3",
+            "version_normalized": "0.4.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Muvon/php-kiss-money.git",
+                "reference": "60638123a0991e50cce996042d163a46884312f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Muvon/php-kiss-money/zipball/60638123a0991e50cce996042d163a46884312f3",
+                "reference": "60638123a0991e50cce996042d163a46884312f3",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^10"
+            },
+            "time": "2021-07-11T12:54:53+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Muvon\\KISS\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muvon Co. Ltd",
+                    "email": "contact@muvon.io"
+                }
+            ],
+            "description": "KISS implementation of Money manipuliation logic",
+            "keywords": [
+                "amount",
+                "currency",
+                "kiss",
+                "lightweight",
+                "money",
+                "value"
+            ],
+            "support": {
+                "issues": "https://github.com/Muvon/php-kiss-money/issues",
+                "source": "https://github.com/Muvon/php-kiss-money/tree/0.4.3"
+            },
+            "install-path": "../muvon/kiss-money"
+        },
+        {
             "name": "muvon/kiss-request-trait",
             "version": "0.8.2",
             "version_normalized": "0.8.2.0",

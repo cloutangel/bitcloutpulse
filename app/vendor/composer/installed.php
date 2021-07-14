@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'd71c0caf40da06a1c48eabf58c4828b644370109',
+    'reference' => 'f3165c87ed704b0690a34b2d5df5dac2582a6c03',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'd71c0caf40da06a1c48eabf58c4828b644370109',
+      'reference' => 'f3165c87ed704b0690a34b2d5df5dac2582a6c03',
     ),
     'minter/minter-php-bip-44' => 
     array (
@@ -64,6 +64,15 @@
       array (
       ),
       'reference' => '6f7bef5ab40cf458fb6e8015412290805bf54831',
+    ),
+    'muvon/kiss-money' => 
+    array (
+      'pretty_version' => '0.4.3',
+      'version' => '0.4.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '60638123a0991e50cce996042d163a46884312f3',
     ),
     'muvon/kiss-request-trait' => 
     array (

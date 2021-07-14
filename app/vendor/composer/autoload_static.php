@@ -8,6 +8,7 @@ class ComposerStaticInit6e8bebcab0d043fc452aa405318d1276
 {
     public static $files = array (
         'fdebb5c5d6efd2c1a1d3bd653d998fea' => __DIR__ . '/..' . '/muvon/kiss-binary-codec/src/functions.php',
+        '9b14fd02f5973ae82dd9f0610b8df4fd' => __DIR__ . '/..' . '/muvon/kiss-money/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -33,11 +34,12 @@ class ComposerStaticInit6e8bebcab0d043fc452aa405318d1276
             0 => __DIR__ . '/..' . '/muvon/base58-codec/src',
             1 => __DIR__ . '/..' . '/muvon/kiss-binary-codec/src',
             2 => __DIR__ . '/..' . '/muvon/kiss-request-trait/src',
+            3 => __DIR__ . '/..' . '/muvon/kiss-money/src',
         ),
         'Muvon\\Bitclout\\' => 
         array (
-            0 => __DIR__ . '/..' . '/muvon/bitclout-node-api/src',
-            1 => __DIR__ . '/..' . '/muvon/bitclout-creator-coin/src',
+            0 => __DIR__ . '/..' . '/muvon/bitclout-creator-coin/src',
+            1 => __DIR__ . '/..' . '/muvon/bitclout-node-api/src',
         ),
         'Elliptic\\' => 
         array (

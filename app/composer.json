@@ -1,6 +1,7 @@
 {
     "require": {
         "muvon/bitclout-node-api": "^0.6.0",
-        "muvon/bitclout-creator-coin": "^0.4.0"
+        "muvon/bitclout-creator-coin": "^0.4.0",
+        "muvon/kiss-money": "^0.4.3"
     }
 }
