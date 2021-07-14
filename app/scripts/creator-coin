@@ -92,6 +92,7 @@ while (true) {
     $coin_map[$creator_pubkey]
       ->setReward($reward_map[$creator_pubkey])
       ->setStrategyByHeight($height)
+      ->setIsCreator($investor_pubkey === $creator_pubkey)
     ;
     if ($coin_meta['OperationType'] === 'buy') {
       $nanos = $coin_meta['BitCloutToSellNanos'];
