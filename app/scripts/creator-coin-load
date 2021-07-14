@@ -23,6 +23,9 @@ Cli::print('Loading coins');
 $coin_map = [];
 $coin_data = json_decode(file_get_contents($coin_file), true);
 foreach ($coin_data as $pubkey => $data) {
+  if (!isset($data)) {
+    continue;
+  }
   $Storage->setCreatorCoin($pubkey, $data);
 }
 Cli::print('done');
