@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0,target-densitydpi=160dpi,user-scalable=1"/>
   <meta name="robots" content="noarchive"/>
   <meta name="googlebot" content="noarchive"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com"/>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" type="text/css" href="/bundle-{BUNDLE_HASH}.css"/>
   <link rel="icon" type="image/x-icon" href="/img/favicon.png"/>
   <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png"/>
@@ -20,6 +22,6 @@
       document.head.appendChild(script);
     });
   </script>
-  <title>KISS Core</title>
+	<title>CREATOR COINS TRADING</title>
 </head>
 <body>
