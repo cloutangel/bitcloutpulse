@@ -73,6 +73,6 @@ mnemonic = '"profit deputy zero enact want advice north such nephew arch fence e
 read_url = 'http://135.181.214.46:8013'
 write_url = 'http://135.181.214.46:8013'
 
-[bitclout:production]
-read_url = 'http://10.0.0.7:8013'
-write_url = 'http://10.0.0.7:8013'
+; [bitclout:production]
+; read_url = 'http://10.0.0.7:8013'
+; write_url = 'http://10.0.0.7:8013'
