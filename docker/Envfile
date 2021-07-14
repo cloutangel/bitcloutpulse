@@ -1,1 +1,2 @@
-dev: nginx php bundle
+dev: nginx php bundle ardb
+production: nginx php bundle ardb

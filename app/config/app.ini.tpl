@@ -13,7 +13,7 @@ action_map_file    = '{{CONFIG_DIR}}/action_map.php'
 upload_max_filesize = '10M'
 
 proto = 'http'
-domain = '{{PROJECT}}.lo'
+domain = 'bitcloutpulse.cloutangel.lo'
 
 lang_type = 'path' ; path or domain or none depends what we use for split
 languages[] = 'en'
@@ -22,7 +22,7 @@ languages[] = 'en'
 domain = '{{PROJECT}}.dev'
 
 [common:production]
-domain = '{{PROJECT}}.ru'
+domain = 'bitcloutpulse.cloutangel.com'
 
 [default]
 action = 'home'
