@@ -92,9 +92,9 @@ while (true) {
       $last_buy = $coin_map[$creator_pubkey]->buy($nanos)->getLastBuy();
       $coins = $last_buy['received'];
     } else {
-      $last_sell = $coin_map[$creator_pubkey]->buy($nanos)->getLastSell();
-      $nanos = $last_sell['returned'];
       $coins = $coin_meta['CreatorCoinToSellNanos'];
+      $last_sell = $coin_map[$creator_pubkey]->sell($coins)->getLastSell();
+      $nanos = $last_sell['returned'];
     }
 
     Cli::print([
