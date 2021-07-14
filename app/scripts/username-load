@@ -11,6 +11,10 @@ Cli::print('start');
 $Storage = ArdbStorage::create();
 $Node = NodeAPI::create(config('bitclout'));
 foreach ($Storage->getUsernameMap() as $pubkey => $username) {
+  if ($pubkey !== $username) { // Do not reload username twice
+    continue;
+  }
+
   [$err, $profile] = $Node->getProfile($pubkey, 'pubkey');
   if ($err) {
     continue;
