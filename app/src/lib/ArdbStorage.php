@@ -29,4 +29,13 @@ class ArdbStorage extends ArdbClient {
     $this->Client->hSet('creator:reward', $pubkey, $reward);
     return $this;
   }
+
+  public function getCreatorCoin(string $pubkey): array {
+    return explode(':', $this->Client->hGet('creator:coin', $pubkey) ?: '0:0:0');
+  }
+
+  public function setCreatorCoin(string $pubkey, array $data): static {
+    $this->Client->hSet('creator:coin', $pubkey, implode(':', $data));
+    return $this;
+  }
 }

@@ -1,0 +1,28 @@
+#!/usr/bin/env /src/bin/php-exec-one
+<?php
+
+use App\Component\Coin;
+use App\Lib\ArdbStorage;
+use App\Lib\BitcloutPulse;
+use Muvon\Bitclout\NodeAPI;
+use Muvon\Bitclout\CreatorCoin;
+ini_set('memory_limit', '2G');
+Cli::print('start');
+$Storage = ArdbStorage::create();
+
+$reward_file = 'reward_12000';
+$coin_file = 'coin_12000';
+
+Cli::print('Loading rewards');
+$reward_map = json_decode(file_get_contents($reward_file), true);
+foreach ($reward_map as $pubkey => $reward) {
+  $Storage->setCreatorReward($pubkey, $reward);
+}
+
+Cli::print('Loading coins');
+$coin_map = [];
+$coin_data = json_decode(file_get_contents($coin_file), true);
+foreach ($coin_data as $pubkey => $data) {
+  $Storage->setCreatorCoin($pubkey, $data);
+}
+Cli::print('done');
