@@ -59,7 +59,7 @@ class ArdbStorage extends ArdbClient {
         'username' => $username_map[$pubkey] ?: $pubkey,
         'contest1' => $buy_map[$pubkey] ?: 0,
         'contest2' => $contest_id === 2 ? $value : ($this->Client->zScore('contest:2', $pubkey) ?: 0),
-        'contest3' => $contest_id === 3 ? $value : ($this->Client->zScore('contest:3', $pubkey) ?: 0),
+        'contest3' => floor(($contest_id === 3 ? $value : ($this->Client->zScore('contest:3', $pubkey) ?: 0)) / 10 ** 9),
         'bought' => $buy_map[$pubkey] ?: 0,
         'sold' => $sell_map[$pubkey] ?: 0,
         'balance' => $balance_map[$pubkey] ?: 0,
@@ -77,20 +77,11 @@ class ArdbStorage extends ArdbClient {
     }
 
     $buy_clout = $this->Client->hGet('investor:buy', $investor_pubkey) ?: 0;
-    $entries = floor($buy_clout / (100 * 10 ** 9));
-    $this->Client->zAdd('contest:2', $entries, $investor_pubkey);
+    if ($buy_clout >= 100 * 10 ** 9) {
+      $this->Client->zAdd('contest:2', floor($buy_clout /100 * 10 * 9), $investor_pubkey);
+    }
 
-    $delta = $operation === 'buy' ? $clout : -$clout;
-    $held_before = $this->Client->hGet('portfolio:' . $investor_pubkey, $creator_pubkey) ?: 0;
-    $this->Client->hIncrBy('portfolio:' . $investor_pubkey, $creator_pubkey, $delta);
-    $held_after = $held_before + $delta;
-    $entries_delta = floor($held_after / 10 ** 9) - floor($held_before / 10 ** 9);
-    if ($entries_delta < 0) {
-      $entries_delta = 0;
-    }
-    if ($entries_delta > 0) {
-      $this->Client->zIncrBy('contest:3', $entries_delta, $investor_pubkey);
-    }
+    $this->Client->zIncrBy('contest:3', $operation === 'buy' ? $clout : -$clout, $investor_pubkey);
     $this->Client->hSet('username', $investor_pubkey, $investor_pubkey);
     return $this;
   }

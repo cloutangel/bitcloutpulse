@@ -103,9 +103,12 @@ while (true) {
       $coins = $coin_meta['CreatorCoinToSellNanos'];
       if ($coin_map[$creator_pubkey]->getStrategy() !== 'watermark') {
         $supply = $coin_map[$creator_pubkey]->getSupply();
-        if (($supply - $coins) < CreatorCoin::THRESHOLD) {
+        if ($supply > $coins && ($supply - $coins) < CreatorCoin::THRESHOLD) {
           $coins = $supply;
         }
+      }
+      if ($coins === 0) {
+        continue;
       }
       $last_sell = $coin_map[$creator_pubkey]->sell($coins)->getLastSell();
       $nanos = $last_sell['returned'];
