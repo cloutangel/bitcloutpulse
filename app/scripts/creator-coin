@@ -55,6 +55,12 @@ while (true) {
       $reward_map[$meta['FromPublicKeyBase58Check']] = $reward_to;
       $reward_map[$meta['ToPublicKeyBase58Check']] = $reward_from;
 
+      $coin_from = $coin_map[$meta['FromPublicKeyBase58Check']] ?? null;
+      $coin_to = $coin_map[$meta['ToPublicKeyBase58Check']] ?? null;
+
+      $coin_map[$meta['FromPublicKeyBase58Check']] = $coin_to;
+      $coin_map[$meta['ToPublicKeyBase58Check']] = $coin_from;
+
       continue;
     }
 
