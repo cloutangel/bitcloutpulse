@@ -17,7 +17,7 @@ $reward_map = [];
 
 $height = 0;
 if (file_exists('block')) {
-  $height = intval(file_get_contents('block')) + 1;
+  $height = intval(file_get_contents('block'));
   $reward_map = json_decode(file_get_contents('reward_' . $height), true);
   $coin_data = json_decode(file_get_contents('coin_' . $height), true);
   foreach ($coin_data as $pubkey => [$locked, $supply, $watermark]) {
@@ -25,6 +25,7 @@ if (file_exists('block')) {
       ->init($locked, $supply, $watermark)
     ;
   }
+  ++$height;
 }
 while (true) {
   Cli::print('Height #' . $height);
@@ -100,6 +101,12 @@ while (true) {
       $coins = $last_buy['received'];
     } else {
       $coins = $coin_meta['CreatorCoinToSellNanos'];
+      if ($coin_map[$creator_pubkey]->getStrategy() !== 'watermark') {
+        $supply = $coin_map[$creator_pubkey]->getSupply();
+        if (($coins - $supply) < CreatorCoin::THRESHOLD) {
+          $coins = $supply;
+        }
+      }
       $last_sell = $coin_map[$creator_pubkey]->sell($coins)->getLastSell();
       $nanos = $last_sell['returned'];
     }
