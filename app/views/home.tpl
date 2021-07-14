@@ -22,15 +22,15 @@
             <th>Bought, $CLOUT</th>
             <th>Sold, $CLOUT</th>
             <th>Balance, $CLOUT</th>
-            <th><img src="i/coin.png" class="coin-img" alt="">Contest 1</th>
-            <th><img src="i/coin.png" class="coin-img" alt="">Contest 2</th>
-            <th><img src="i/coin.png" class="coin-img" alt="">Contest 3</th>
+            <th><img src="/i/coin.png" class="coin-img" alt="">Contest 1</th>
+            <th><img src="/i/coin.png" class="coin-img" alt="">Contest 2</th>
+            <th><img src="/i/coin.png" class="coin-img" alt="">Contest 3</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>1</td>
-            <td><a href="#">diamondhands</a><img src="i/coin.png" class="coin-img" alt=""></td>
+            <td><a href="#">diamondhands</a><img src="/i/coin.png" class="coin-img" alt=""></td>
             <td class="green">100.01</td>
             <td class="red">5.31</td>
             <td>94.70</td>
@@ -80,7 +80,7 @@
           </tr>
           <tr>
             <td>6</td>
-            <td><a href="#">diamondhands</a><img src="i/coin.png" class="coin-img" alt=""></td>
+            <td><a href="#">diamondhands</a><img src="/i/coin.png" class="coin-img" alt=""></td>
             <td class="green">100.01</td>
             <td class="red">5.31</td>
             <td>94.70</td>
@@ -130,7 +130,7 @@
           </tr>
           <tr>
             <td>11</td>
-            <td><a href="#">diamondhands</a><img src="i/coin.png" class="coin-img" alt=""></td>
+            <td><a href="#">diamondhands</a><img src="/i/coin.png" class="coin-img" alt=""></td>
             <td class="green">100.01</td>
             <td class="red">5.31</td>
             <td>94.70</td>
@@ -180,7 +180,7 @@
           </tr>
           <tr>
             <td>16</td>
-            <td><a href="#">diamondhands</a><img src="i/coin.png" class="coin-img" alt=""></td>
+            <td><a href="#">diamondhands</a><img src="/i/coin.png" class="coin-img" alt=""></td>
             <td class="green">100.01</td>
             <td class="red">5.31</td>
             <td>94.70</td>
@@ -230,7 +230,7 @@
           </tr>
           <tr>
             <td>21</td>
-            <td><a href="#">diamondhands</a><img src="i/coin.png" class="coin-img" alt=""></td>
+            <td><a href="#">diamondhands</a><img src="/i/coin.png" class="coin-img" alt=""></td>
             <td class="green">100.01</td>
             <td class="red">5.31</td>
             <td>94.70</td>
@@ -280,7 +280,7 @@
           </tr>
           <tr>
             <td>26</td>
-            <td><a href="#">diamondhands</a><img src="i/coin.png" class="coin-img" alt=""></td>
+            <td><a href="#">diamondhands</a><img src="/i/coin.png" class="coin-img" alt=""></td>
             <td class="green">100.01</td>
             <td class="red">5.31</td>
             <td>94.70</td>
@@ -330,7 +330,7 @@
           </tr>
           <tr>
             <td>31</td>
-            <td><a href="#">diamondhands</a><img src="i/coin.png" class="coin-img" alt=""></td>
+            <td><a href="#">diamondhands</a><img src="/i/coin.png" class="coin-img" alt=""></td>
             <td class="green">100.01</td>
             <td class="red">5.31</td>
             <td>94.70</td>
@@ -380,7 +380,7 @@
           </tr>
           <tr>
             <td>36</td>
-            <td><a href="#">diamondhands</a><img src="i/coin.png" class="coin-img" alt=""></td>
+            <td><a href="#">diamondhands</a><img src="/i/coin.png" class="coin-img" alt=""></td>
             <td class="green">100.01</td>
             <td class="red">5.31</td>
             <td>94.70</td>
@@ -430,7 +430,7 @@
           </tr>
           <tr>
             <td>41</td>
-            <td><a href="#">diamondhands</a><img src="i/coin.png" class="coin-img" alt=""></td>
+            <td><a href="#">diamondhands</a><img src="/i/coin.png" class="coin-img" alt=""></td>
             <td class="green">100.01</td>
             <td class="red">5.31</td>
             <td>94.70</td>
@@ -480,7 +480,7 @@
           </tr>
           <tr>
             <td>46</td>
-            <td><a href="#">diamondhands</a><img src="i/coin.png" class="coin-img" alt=""></td>
+            <td><a href="#">diamondhands</a><img src="/i/coin.png" class="coin-img" alt=""></td>
             <td class="green">100.01</td>
             <td class="red">5.31</td>
             <td>94.70</td>
