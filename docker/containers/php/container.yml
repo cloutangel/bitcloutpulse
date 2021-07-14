@@ -9,8 +9,8 @@ cap_add:
 volumes:
   - env-storage:/src/env:rw
 environment:
-  - STORAGE_HOST=$STORAGE_HOST
-  - STORAGE_PORT=$STORAGE_PORT
+  - ARDB_HOST=$ARDB_HOST
+  - ARDB_PORT=$ARDB_PORT
   - PROJECT=$COMPOSE_PROJECT_NAME
   - PROJECT_ENV=$ENV
   - PROJECT_REV=$REVISION

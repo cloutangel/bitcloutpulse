@@ -23,7 +23,7 @@ abstract class ArdbClient {
   }
 
   public static function create(): static {
-    return new static(getenv('REDIS_HOST'), getenv('REDIS_PORT'));
+    return new static(getenv('ARDB_HOST'), getenv('ARDB_PORT'));
   }
 
   public function commit(): bool {
