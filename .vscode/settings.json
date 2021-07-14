@@ -10,7 +10,7 @@
     "env": true,
     "app/static/asset": true,
     "app/client/asset": true,
-    "app/vendor": true
+    "app/vendor": false
   },
   "files.associations": {
     "*.tpl": "html",

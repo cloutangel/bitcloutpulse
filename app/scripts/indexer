@@ -1,2 +1,67 @@
 #!/usr/bin/env /src/bin/php-exec-one
 <?php
+
+use App\Component\Coin;
+use App\Lib\ArdbStorage;
+use Muvon\Bitclout\NodeAPI;
+
+Cli::print('start');
+
+$Storage = ArdbStorage::create();
+$Node = NodeAPI::create(config('bitclout'));
+
+$height = $Storage->getLastHeight();
+$block = result($Node->getBlock($height, 'height', true));
+
+$last_tx = $Storage->getLastTxId();
+$skip = !!$last_tx;
+foreach ($block['Transactions'] as $tx) {
+  if ($tx['TransactionType'] !== 'CREATOR_COIN') {
+    continue;
+  }
+
+  $tx_id = $tx['TransactionIDBase58Check'];
+  if ($skip) {
+    if ($last_tx === $tx_id) {
+      $skip = false;
+    }
+    continue;
+  }
+
+  $tx_meta = $tx['TransactionMetadata'];
+  $coin_meta = $tx_meta['CreatorCoinTxindexMetadata'];
+  $investor_pubkey = $tx_meta['TransactorPublicKeyBase58Check'];
+  $creator_pubkey = null;
+  foreach ($tx_meta['AffectedPublicKeys'] as $affected) {
+    if ($affected['Metadata'] === 'CreatorPublicKey') {
+      $creator_pubkey = $affected['PublicKeyBase58Check'];
+    }
+  }
+
+  Cli::print([
+    $tx_id,
+    '  investor = ' . $investor_pubkey,
+    '  creator = ' . $creator_pubkey,
+    '  operation = ' . $coin_meta['OperationType'],
+  ]);
+
+  if ($coin_meta['OperationType'] === 'buy') {
+    $nanos = $coin_meta['BitCloutToSellNanos'];
+    $Coin = Coin::getByPubkey($creator_pubkey);
+    $last_buy = $Coin->buy($nanos)->getLastBuy();
+    $coins = $last_buy['received'];
+  } else {
+    $nanos = 0;
+    $coins = $coin_meta['CreatorCoinToSellNanos'];
+  }
+
+  Cli::print([
+    '  coins = ' . bcdiv($coins, 10 ** 9, 9),
+    '  clout = ' . bcdiv($nanos, 10 ** 9, 9),
+  ]);
+  $Storage->setLastTxId($tx_id);
+}
+$Storage->setLastHeight($height);
+$Storage->setLastTxId('');
+
+Cli::print('done');

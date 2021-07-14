@@ -409,8 +409,14 @@ final class Cli {
     return $secret;
   }
 
-  public static function print(string $line): void {
-    echo gmdate('[Y-m-d H:i:s T]') . ' ' . rtrim($line) . PHP_EOL;
+  public static function print(string|array $lines): void {
+    if (is_string($lines)) {
+      $lines = [$lines];
+    }
+    $date = gmdate('[Y-m-d H:i:s T]');
+    foreach ($lines as $line) {
+      echo $date . ' ' . rtrim($line) . PHP_EOL;
+    }
   }
 
   public static function error(string $line, int $error_code = 1): void {

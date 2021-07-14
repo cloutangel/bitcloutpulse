@@ -64,3 +64,15 @@ origin = '*'
 methods = 'GET, POST, PUT, DELETE, OPTIONS'
 headers = 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type'
 credentials = 'true'
+
+
+[bitclout]
+username = ''
+public_key = 'BC1YLg3HYsPVpx5DDCtxXdQVEnGqTG5hd9kRudJBpCerGW4yRdLP3AA'
+mnemonic = '"profit deputy zero enact want advice north such nephew arch fence equip'
+read_url = 'http://135.181.214.46:8013'
+write_url = 'http://135.181.214.46:8013'
+
+[bitclout:production]
+read_url = 'http://10.0.0.7:8013'
+write_url = 'http://10.0.0.7:8013'
