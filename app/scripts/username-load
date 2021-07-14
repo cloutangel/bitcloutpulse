@@ -1,0 +1,27 @@
+#!/usr/bin/env /src/bin/php-exec-one
+<?php
+
+use App\Component\Coin;
+use App\Lib\ArdbStorage;
+use App\Lib\BitcloutPulse;
+use Muvon\Bitclout\NodeAPI;
+use Muvon\Bitclout\CreatorCoin;
+ini_set('memory_limit', '2G');
+Cli::print('start');
+$Storage = ArdbStorage::create();
+$Node = NodeAPI::create(config('bitclout'));
+foreach ($Storage->getUsernameMap() as $pubkey => $username) {
+  [$err, $profile] = $Node->getProfile($pubkey, 'pubkey');
+  if ($err) {
+    continue;
+  }
+  
+  $username = $profile['Username'];
+  Cli::print([
+    $pubkey,
+    '  username = ' . $username
+  ]);
+
+  $Storage->setUsername($pubkey, $username);
+}
+Cli::print('done');
