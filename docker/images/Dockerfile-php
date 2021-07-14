@@ -4,7 +4,7 @@ LABEL maintainer="Muvon Co. Ltd <contact@muvon.io>"
 RUN apk add --update bash openssl && \
   rm -fr /var/cache/apk/* && \
   rm -fr /tmp/*
-RUN php-ext add msgpack yaml
+RUN php-ext add msgpack yaml redis
 
 COPY . /src
 RUN ln -fs /src/docker/containers/php/config/php.ini /etc/php/php.ini && \
