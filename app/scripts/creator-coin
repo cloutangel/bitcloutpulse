@@ -112,6 +112,9 @@ while (true) {
     file_put_contents('reward_' . $height, json_encode($reward_map));
     $coin_data = [];
     foreach ($coin_map as $pubkey => $Coin) {
+      if (is_null($Coin)) {
+        continue;
+      }
       $coin_data[$pubkey] = [$Coin->getLocked(), $Coin->getSupply(), $Coin->getWatermark()];
     }
     file_put_contents('coin_' . $height, json_encode($coin_data));
