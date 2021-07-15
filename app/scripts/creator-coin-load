@@ -10,8 +10,8 @@ ini_set('memory_limit', '2G');
 Cli::print('start');
 $Storage = ArdbStorage::create();
 
-$reward_file = 'reward_42000';
-$coin_file = 'coin_42000';
+$reward_file = 'reward_41500';
+$coin_file = 'coin_41500';
 
 Cli::print('Loading rewards');
 $reward_map = json_decode(file_get_contents($reward_file), true);
