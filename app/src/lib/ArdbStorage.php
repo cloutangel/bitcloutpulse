@@ -40,9 +40,10 @@ class ArdbStorage extends ArdbClient {
   }
 
   public function getContestList(int $contest_id): array {
-    $list1 = $this->Client->zRevRange('contest:1', 0, 99, true) ?: [];
-    $list2 = $this->Client->zRevRange('contest:2', 0, 99, true) ?: [];
-    $list3 = $this->Client->zRevRange('contest:3', 0, 99, true) ?: [];
+    // We get gapped entries to skip pubkeys
+    $list1 = $this->Client->zRevRange('contest:1', 0, 120, true) ?: [];
+    $list2 = $this->Client->zRevRange('contest:2', 0, 120, true) ?: [];
+    $list3 = $this->Client->zRevRange('contest:3', 0, 120, true) ?: [];
     $result = [];
     $list = &${"list$contest_id"};
 
@@ -53,10 +54,14 @@ class ArdbStorage extends ArdbClient {
     $username_map = $this->Client->hMGet('username', $pubkeys);
     $rank = 0;
     foreach ($list as $pubkey => $value) {
+      $username = $username_map[$pubkey] ?: $pubkey;
+      if ($pubkey === $username) { // <- skip pubkeys
+        continue;
+      }
       $result[] = [
         'rank' => ++$rank,
         'pubkey' => $pubkey,
-        'username' => $username_map[$pubkey] ?: $pubkey,
+        'username' => $username,
         'contest1' => $buy_map[$pubkey] ?: 0,
         'contest2' => floor(($contest_id === 2 ? $value : ($this->Client->zScore('contest:2', $pubkey) ?: 0)) / (100 * 10 ** 9)),
         'contest3' => floor(($contest_id === 3 ? $value : ($this->Client->zScore('contest:3', $pubkey) ?: 0)) / 10 ** 9),
