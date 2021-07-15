@@ -1,3 +1,9 @@
 dev: nginx php bundle ardb
-production: nginx php bundle ardb
+production:
+  - nginx
+  - php
+  - bundle
+  - ardb
+  - cron.username-load
+  - cron.indexer
 box@65.21.248.214: production
