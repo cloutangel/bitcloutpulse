@@ -1,8 +1,9 @@
 <main>
   <div class="coins-table" style="max-width: 1280px;margin: 50px auto;">
     <div>
-      <div class="clearfix">
-        <p class="coins-table-ttl">CREATOR COINS TRADING</p>
+      <div class="clearfix">      
+        <p><img src="/img/bitcloutpulse-logo.png" height="64" style="float:left"/></p>
+        <p class="coins-table-ttl" style="vertical-align:middle">CREATOR COINS TRADING</p>
         {>home__pagination}
       </div>
       <table>
