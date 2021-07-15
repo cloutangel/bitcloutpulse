@@ -10,6 +10,7 @@ ini_set('memory_limit', '4G');
 
 Cli::print('start');
 
+$contest_height = 41839;
 $Storage = ArdbStorage::create();
 $Node = NodeAPI::create(config('bitclout'));
 
@@ -109,7 +110,9 @@ while (true) {
       '  clout = ' . bcdiv($nanos, 10 ** 9, 9),
     ]);
 
-    $Storage->storeCoinOperation($investor_pubkey, $creator_pubkey, $coin_meta['OperationType'], $coins, $nanos);
+    if ($height >= $contest_height) {
+      $Storage->storeCoinOperation($investor_pubkey, $creator_pubkey, $coin_meta['OperationType'], $coins, $nanos);
+    }
     $Storage->setLastTxId($tx_id);
   }
   $Storage->setLastHeight($height++);
