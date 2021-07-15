@@ -3,16 +3,7 @@
     <div>
       <div class="clearfix">
         <p class="coins-table-ttl">CREATOR COINS TRADING</p>
-        <nav class="navigation-pagination">
-          <ul class="pagination pagination-sm">
-            <!-- <li class="page-item disabled"><span class="page-link">First</span></li>
-            <li class="page-item disabled"><span class="page-link"><i class="prev"></i></span></li> -->
-            <li class="page-item disabled"><span class="page-link text-nowrap">Page <strong
-                  class="font-weight-medium">1</strong> of <strong class="font-weight-medium">1</strong></span></li>
-            <!-- <li class="page-item"><a class="page-link" href="txs?p=2"><span><i class="next"></i></span></a></li> -->
-            <!-- <li class="page-item"><a class="page-link" href="txs?p=10000"><span>Last</span></a></li> -->
-          </ul>
-        </nav>
+        {>home__pagination}
       </div>
       <table>
         <thead>
@@ -43,18 +34,9 @@
         </tbody>
       </table>
 
-      <!-- <div class="clearfix">
-        <nav class="navigation-pagination">
-          <ul class="pagination pagination-sm mb-0">
-            <li class="page-item disabled"><span class="page-link">First</span></li>
-            <li class="page-item disabled"><span class="page-link"><i class="prev"></i></span></li>
-            <li class="page-item disabled"><span class="page-link text-nowrap">Page <strong
-                  class="font-weight-medium">1</strong> of <strong class="font-weight-medium">10000</strong></span></li>
-            <li class="page-item"><a class="page-link" href="txs?p=2"><span><i class="next"></i></span></a></li>
-            <li class="page-item"><a class="page-link" href="txs?p=10000"><span>Last</span></a></li>
-          </ul>
-        </nav>
-      </div> -->
+      <div class="clearfix">
+        {>home__pagination}
+      </div>
     </div>
   </div>
 </main>

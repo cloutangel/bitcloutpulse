@@ -39,11 +39,17 @@ class ArdbStorage extends ArdbClient {
     return $this;
   }
 
-  public function getContestList(int $contest_id): array {
+  public function getContestListCount(int $contest_id): int {
+    return $this->Client->zCard('contest:' . $contest_id) ?: 0;
+  }
+
+  public function getContestList(int $contest_id, int $offset = 0, $limit = 100): array {
     // We get gapped entries to skip pubkeys
-    $list1 = $this->Client->zRevRange('contest:1', 0, 120, true) ?: [];
-    $list2 = $this->Client->zRevRange('contest:2', 0, 120, true) ?: [];
-    $list3 = $this->Client->zRevRange('contest:3', 0, 120, true) ?: [];
+    $gap = 20;
+    $end = $limit + $gap - 1;
+    $list1 = $this->Client->zRevRange('contest:1', $offset, $end, true) ?: [];
+    $list2 = $this->Client->zRevRange('contest:2', $offset, $end, true) ?: [];
+    $list3 = $this->Client->zRevRange('contest:3', $offset, $end, true) ?: [];
     $result = [];
     $list = &${"list$contest_id"};
 
@@ -52,7 +58,7 @@ class ArdbStorage extends ArdbClient {
     $buy_map = $this->Client->hMGet('investor:buy', $pubkeys);
     $sell_map = $this->Client->hMGet('investor:sell', $pubkeys);
     $username_map = $this->Client->hMGet('username', $pubkeys);
-    $rank = 0;
+    $rank = $offset;
     foreach ($list as $pubkey => $value) {
       $username = $username_map[$pubkey] ?: $pubkey;
       if ($pubkey === $username) { // <- skip pubkeys
