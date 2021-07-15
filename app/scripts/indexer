@@ -96,6 +96,9 @@ while (true) {
       $coins = $last_buy['received'];
     } else {
       $coins = $coin_meta['CreatorCoinToSellNanos'];
+      if ($coins > $Coin->getSupply()) {
+        continue;
+      }
       $last_sell = $Coin->sell($coins)->getLastSell();
       $nanos = $last_sell['returned'];
     }
@@ -115,7 +118,7 @@ while (true) {
     }
     $Storage->setLastTxId($tx_id);
   }
-  $Storage->setLastHeight($height++);
+  $Storage->setLastHeight(++$height);
 }
 
 Cli::print('done');

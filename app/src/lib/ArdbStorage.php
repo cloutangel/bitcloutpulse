@@ -58,7 +58,7 @@ class ArdbStorage extends ArdbClient {
         'pubkey' => $pubkey,
         'username' => $username_map[$pubkey] ?: $pubkey,
         'contest1' => $buy_map[$pubkey] ?: 0,
-        'contest2' => $contest_id === 2 ? $value : ($this->Client->zScore('contest:2', $pubkey) ?: 0),
+        'contest2' => floor(($contest_id === 2 ? $value : ($this->Client->zScore('contest:2', $pubkey) ?: 0)) / (100 * 10 ** 9)),
         'contest3' => floor(($contest_id === 3 ? $value : ($this->Client->zScore('contest:3', $pubkey) ?: 0)) / 10 ** 9),
         'bought' => $buy_map[$pubkey] ?: 0,
         'sold' => $sell_map[$pubkey] ?: 0,
@@ -78,7 +78,7 @@ class ArdbStorage extends ArdbClient {
 
     $buy_clout = $this->Client->hGet('investor:buy', $investor_pubkey) ?: 0;
     if ($buy_clout >= 100 * 10 ** 9) {
-      $this->Client->zAdd('contest:2', floor($buy_clout /100 * 10 * 9), $investor_pubkey);
+      $this->Client->zAdd('contest:2', $buy_clout, $investor_pubkey);
     }
 
     $this->Client->zIncrBy('contest:3', $operation === 'buy' ? $clout : -$clout, $investor_pubkey);
