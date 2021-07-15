@@ -15,7 +15,7 @@ upload_max_filesize = '10M'
 proto = 'http'
 domain = 'bitcloutpulse.cloutangel.lo'
 
-lang_type = 'path' ; path or domain or none depends what we use for split
+lang_type = 'none' ; path or domain or none depends what we use for split
 languages[] = 'en'
 
 [common:test]
