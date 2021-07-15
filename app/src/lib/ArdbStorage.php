@@ -73,7 +73,7 @@ class ArdbStorage extends ArdbClient {
         'contest3' => floor(($contest_id === 3 ? $value : ($this->Client->zScore('contest:3', $pubkey) ?: 0)) / 10 ** 9),
         'bought' => $buy_map[$pubkey] ?: 0,
         'sold' => $sell_map[$pubkey] ?: 0,
-        'balance' => $balance_map[$pubkey] ?: 0,
+        'balance' => ($buy_map[$pubkey] ?? 0) - ($sell_map[$pubkey] ?? 0),
       ];
     }
 
