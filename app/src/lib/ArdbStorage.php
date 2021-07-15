@@ -4,7 +4,7 @@ namespace App\Lib;
 
 class ArdbStorage extends ArdbClient {
   public function getLastHeight(): int {
-    return $this->Client->get('block:height') ?: 12005;
+    return $this->Client->get('block:height') ?: 41839;
   }
 
   public function setLastHeight(int $height): static {
