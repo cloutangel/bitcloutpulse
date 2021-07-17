@@ -58,22 +58,22 @@ h2 { font-size: 18px; font-weight: normal; }
 .pagination-sm .page-item:first-child .page-link { border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; }
 .pagination-sm .page-item:last-child .page-link { border-top-right-radius: .25rem; border-bottom-right-radius: .25rem; }
 
-.pagination .prev { background: url(asset/i/coin-arr-prev.png) no-repeat center; width: 10px; height: 19px; display: block; }
-.pagination .next { background: url(asset/i/coin-arr-next.png) no-repeat center; width: 10px; height: 19px; display: block; }
+.pagination .prev { background: url(../i/coin-arr-prev.png) no-repeat center; width: 10px; height: 19px; display: block; }
+.pagination .next { background: url(../i/coin-arr-next.png) no-repeat center; width: 10px; height: 19px; display: block; }
 .page-item { margin-left: .15rem; margin-right: .15rem; }
 .page-item .page-link { border-top-left-radius: .35rem; border-bottom-left-radius: .35rem; border-top-right-radius: .35rem; border-bottom-right-radius: .35rem; }
 
-.coins-table-ttl { font-size: 24px; color: #1e2022; margin:0 0 0 8px; float: left; }
+.coins-table-ttl { font-size: 24px; color: #1e2022; margin:-10px 0 10px 8px; float: left; }
 
 .coins-table { box-shadow: 0 .5rem 1.2rem rgba(189,197,209,.2); word-wrap: break-word; background-color: #fff; background-clip: border-box; border: 1px solid #e7eaf3; border-radius: .5rem; padding: 1.75rem .75rem 0; }
 .coins-table table { width: 100%; border-collapse: collapse; color: #999; margin: 0 0 30px; }
 .coins-table th { color: #1e2022; background-color: #f8fafd; vertical-align: bottom; border-bottom: 2px solid #e7eaf3; white-space: nowrap; padding: .625rem; border-top: 1px solid #e7eaf3; font-weight: 600; text-align: center; }
 .coins-table th:nth-child(1),
 .coins-table th:nth-child(2) { text-align: left; }
-.coins-table td { padding: .625rem; vertical-align: top; border-top: 1px solid #e7eaf3; word-wrap: break-word; text-align: center; }
+.coins-table td { padding: 10px; vertical-align: top; border-top: 1px solid #e7eaf3; word-wrap: break-word; text-align: center; }
 .coins-table td:nth-child(1),
 .coins-table td:nth-child(2) { font-weight: 600; color: #6c757e; }
-.coins-table td:nth-child(2) { text-align: left; }
+.coins-table td:nth-child(2) { text-align: left; padding: 10px.625rem; }
 .coins-table td a { color: #6c757e; text-decoration: none; }
 
 .coins-table .green { color: #32cd32; }
@@ -81,9 +81,16 @@ h2 { font-size: 18px; font-weight: normal; }
 
 .coins-table th .coin-img { width: 16px; margin: 2px 2px 0 0; vertical-align: top; }
 .coins-table td .coin-img { width: 12px; vertical-align: top; margin: 3px 0 0 8px; }
+.coins-table td .ticket-img { width: 20px; vertical-align: top; margin: -1px 0 0 3px; }
 
+.coins-table td .icon-profile { text-decoration: none; }
+.coins-table td:nth-child(2) a { position: relative; display: inline-block; padding: 0 0 0 32px; }
+.coins-table td:nth-child(2) i { display: block; height: 24px; width: 24px; position: absolute; left: 0; top: 0; margin: -3px 0; background-position: 0 center; background-repeat: no-repeat; background-size: 24px; border-radius: 50%; }
 
-
+.hint { position: relative; cursor: help; margin: -10px; padding: 10px; }
+.hint-d { right: 0; top: 34px; position: absolute; display: none; width: 400px; background: #fff; padding: 20px; text-align: left; white-space: normal; box-shadow: 0 0 15px 0 #999; border-radius: 5px; font-weight: normal; }
+.hint-d:after { background: #fff; content: ''; display: block; position: absolute; top: -5px; right: 50px; width: 10px; height: 10px; transform: rotate(45deg); }
+.hint:hover .hint-d { display: block; }
 
 
 
