@@ -58,8 +58,8 @@ h2 { font-size: 18px; font-weight: normal; }
 .pagination-sm .page-item:first-child .page-link { border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; }
 .pagination-sm .page-item:last-child .page-link { border-top-right-radius: .25rem; border-bottom-right-radius: .25rem; }
 
-.pagination .prev { background: url(/i/coin-arr-prev.png) no-repeat center; width: 10px; height: 19px; display: block; }
-.pagination .next { background: url(/i/coin-arr-next.png) no-repeat center; width: 10px; height: 19px; display: block; }
+.pagination .prev { background: url(asset/i/coin-arr-prev.png) no-repeat center; width: 10px; height: 19px; display: block; }
+.pagination .next { background: url(asset/i/coin-arr-next.png) no-repeat center; width: 10px; height: 19px; display: block; }
 .page-item { margin-left: .15rem; margin-right: .15rem; }
 .page-item .page-link { border-top-left-radius: .35rem; border-bottom-left-radius: .35rem; border-top-right-radius: .35rem; border-bottom-right-radius: .35rem; }
 
