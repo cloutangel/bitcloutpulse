@@ -21,8 +21,7 @@
                     among themselves proportional to their buy volume.</p>
                   <p>For example, if you buy 10 CLOUT of $artz (https://bitclout.com/u/artz) and sell 5 CLOUT of
                     $elonmusk (https://bitclout.com/u/elonmusk), your BUY volume is still 10 CLOUT.</p>
-                  <p>Volume counts 1.5x if traded on <a href="http://bitcloutpulse.com/"
-                      target="_blank">bitcloutpulse.com</a></p>
+                  <p>Volume counts 1.5x if traded on <a href="http://bitcloutpulse.com/" target="_blank">bitcloutpulse.com</a></p>
                 </div>
               </div>
             </th>
@@ -37,22 +36,20 @@
                   4 winners will get $250<br><br>
                   <p>For example, if you buy 100 CLOUT worth of creator coins, but then sell 25 CLOUT worth, your buy
                     volume would still be 100 CLOUT so you would qualify.</p>
-                  <p>Get an extra entry if that 100 CLOUT in buy volume happens on <a href="http://bitcloutpulse.com/"
-                      target="_blank">bitcloutpulse.com</a>!</p>
+                  <p>Get an extra entry if that 100 CLOUT in buy volume happens on <a href="http://bitcloutpulse.com/" target="_blank">bitcloutpulse.com</a>!</p>
                 </div>
               </div>
             </th>
             <th>
               <div class="hint">
-                <a href="/?contest_id=3"><img src="/i/coin.png" class="coin-img" alt="" />Contest 3
+                <a href="/?contest_id=3"><img src="/i/coin.png" class="coin-img" alt="" />Contest 3</a>
                   <div class="hint-d">
                     <p>If you buy just 1 CLOUT more in creator coins than you sell over the course of the week, you will
                       get 1 entry into another drawing with the same prizes as above. This means (buy volume - sell
                       volume) >= 1 CLOUT.</p>
                     <p>For example, if you buy 5 CLOUT worth of creator coins, but then later in the week sell 3 CLOUT
                       worth, your net buy volume would be 2 CLOUT so you would qualify.</p>
-                    <p>Get an extra entry if at least half of your trades occur on <a href="http://bitcloutpulse.com/"
-                        target="_blank">bitcloutpulse.com</a>!</p>
+                    <p>Get an extra entry if at least half of your trades occur on <a href="http://bitcloutpulse.com/" target="_blank">bitcloutpulse.com</a>!</p>
                   </div>
               </div>
             </th>
@@ -61,8 +58,7 @@
         <tbody>
           <tr>
             <td>1</td>
-            <td><a href="#"><i style="background-image: url(i/22268.gif);">&nbsp;</i>diamondhands</a><img
-                src="i/coin.png" class="coin-img" alt=""></td>
+            <td><a href="#"><i style="background-image: url(i/22268.gif);">&nbsp;</i>diamondhands</a><img src="i/coin.png" class="coin-img" alt=""></td>
             <td class="green">100.01</td>
             <td class="red">5.31</td>
             <td>94.70</td>
@@ -73,9 +69,7 @@
           {list}
           <tr>
             <td>{rank}</td>
-            <td><a href="https://bitclout.com/u/{username}" target="_blank" rel="noopener norefer"><i
-                  style="background-image: url('https://bitclout.com/api/v0/get-single-profile-picture/{pubkey}?fallback=https://bitclout.com/assets/img/default_profile_pic.png');">&nbsp;</i>{username}</a><img
-                src="/i/coin.png" class="coin-img" alt=""></td>
+            <td><a href="https://bitclout.com/u/{username}" target="_blank" rel="noopener norefer"><i style="background-image: url('https://bitclout.com/api/v0/get-single-profile-picture/{pubkey}?fallback=https://bitclout.com/assets/img/default_profile_pic.png');">&nbsp;</i>{username}</a><img src="/i/coin.png" class="coin-img" alt=""></td>
             <td class="green">{bought:clout}</td>
             <td class="red">{sold:clout}</td>
             <td>{balance:clout}</td>
