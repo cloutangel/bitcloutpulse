@@ -119,6 +119,7 @@ while (true) {
     $Storage->setLastTxId($tx_id);
   }
   $Storage->setLastHeight(++$height);
+  $Storage->setLastTxId('');
 }
 
 Cli::print('done');
